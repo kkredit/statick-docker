@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # File: buildimage.sh
-# Copyright (c) 2019, Kevin Kredit
+# Author: Kevin Kredit
 # License: Creative Commons Zero v1.0 Universal
 # Description:
 #   Script to create the Statick Docker image

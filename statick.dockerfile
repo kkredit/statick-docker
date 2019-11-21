@@ -1,5 +1,5 @@
 # Filename: statick.dockerfile
-# Copyright (c) 2019, Kevin Kredit
+# Author: Kevin Kredit
 # License: Creative Commons Zero v1.0 Universal
 # Description:
 #   Dockerfile to encapsulate the Statick envrinment

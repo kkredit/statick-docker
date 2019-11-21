@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # File : runcontainer.sh
-# Copyright (c) 2019, Kevin Kredit
+# Author: Kevin Kredit
 # License: Creative Commons Zero v1.0 Universal
 # Description:
 #   Script to run the Statick image
