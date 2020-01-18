@@ -10,6 +10,7 @@ ARG INST_DIR=/opt/statick
 ARG USER_NAME=statick
 ARG USER_UID=1000
 ARG USER_GID=1000
+ARG OSTYPE=Linux
 
 # Basic setup
 RUN \
@@ -24,7 +25,7 @@ RUN \
     echo "    sys.exit(__main__._main())" >> /usr/bin/pip   && \
     \
     # Create non-root user
-    groupadd -g $USER_GID $USER_NAME                                                    && \
+    bash -c "[ \"$OSTYPE\" = \"Linux\" ] && groupadd -g $USER_GID $USER_NAME"           && \
     useradd --create-home -s /bin/bash -u $USER_UID -g $USER_GID $USER_NAME             && \
     usermod -aG sudo $USER_NAME                                                         && \
     echo "cd /host" >> /home/$USER_NAME/.bashrc                                         && \
@@ -37,7 +38,7 @@ RUN \
 COPY statick/ $INST_DIR/
 
 # Statick-specific installs in separate step for faster rebuilds
-RUN chown -R $USER_NAME:$USER_NAME $INST_DIR    && \
+RUN chown -R $USER_UID:$USER_GID $INST_DIR      && \
     cd $INST_DIR/                               && \
     cat install.txt | xargs apt-get install -y  && \
     pip install -r requirements.txt             && \
