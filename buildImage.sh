@@ -10,6 +10,11 @@ BASE_NAME="statick"
 IMAGE_NAME="$BASE_NAME:$(cd statick && git rev-parse HEAD | head -c8)"
 IMAGE_LATEST="$BASE_NAME:latest"
 
+if [[ ! -f statick/install.txt ]]; then
+    git submodule init
+    git submodule update --init --force --remote
+fi
+
 docker build -t $IMAGE_NAME \
              --build-arg USER_UID=$(id -u) \
              --build-arg USER_GID=$(id -g) \
