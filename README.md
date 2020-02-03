@@ -17,7 +17,7 @@ Welcome to the Statick Docker environment
 $ # in the container; the current directory is mounted as /host
 $ exit
 $ # out of the container
-$ ./runContainer.sh mkdir statick_output && statick . statick_output
+$ ./runContainer.sh statick .
 # statick tool executed in container
 $ # out of the container
 ```
